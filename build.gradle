@@ -1,0 +1,27 @@
+plugins {
+    id 'net.researchgate.release' version '2.3.4'
+}
+
+group 'com.capgemini'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile     group: 'com.capgemini',             name: 'camel-exceptions-data',              version: '0.9.0'
+    compile     group: 'org.apache.commons',        name: 'commons-lang3',                      version: '3.4'
+    compile     group: 'javax.validation',          name: 'validation-api',                     version: '1.1.0.Final'
+
+    testCompile group: 'junit',                     name: 'junit',                              version: '4.11'
+    testCompile group: 'org.hibernate',             name: 'hibernate-validator',                version: '5.0.3.Final'
+
+}
+
+release {
+    buildTasks = ['clean', 'build', 'install']
+}
